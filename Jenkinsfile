@@ -13,9 +13,9 @@ pipeline{
     stages{
 		stage('Checkout local branch') {
 			steps {
-				echo 'Checkout %BRANCH_NAME%'
-				/*bat 'git checkout %BRANCH_NAME%'*/
-			}
+				echo 'Checkout ' + env.BRANCH_NAME
+				bat 'git checkout ' + env.BRANCH_NAME
+            }
 		}
     }
     post{
