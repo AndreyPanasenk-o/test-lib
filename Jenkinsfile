@@ -13,6 +13,10 @@ pipeline{
     stages{
 		stage('Checkout local branch') {
 			steps {
+                //temp
+                bat 'git config remote.origin.url https://github.com/AndreyPanasenk-o/test-lib.git # timeout=10'
+
+
 				echo 'Checkout ' + env.BRANCH_NAME
 				bat 'git checkout ' + env.BRANCH_NAME
             }
