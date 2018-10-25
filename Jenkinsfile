@@ -6,8 +6,8 @@ pipeline{
 		}
 	}
     options {
-		// Keep the 5 most recent builds
-		buildDiscarder(logRotator(numToKeepStr:'0')) 
+		// Keep the 10 most recent builds
+		buildDiscarder(logRotator(numToKeepStr:'10')) 
 	}
 
     stages{
