@@ -3,6 +3,7 @@ pipeline{
 		node {
 			label 'windows'
 			//customWorkspace 'workspace/' + env.JOB_NAME
+            customWorkspace ''
 		}
 	}
     options {
