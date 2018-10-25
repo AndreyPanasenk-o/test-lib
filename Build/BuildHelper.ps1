@@ -9,4 +9,10 @@ function build{
     ng build
     Pop-Location
 }
+function test{
+    Push-Location $PSScriptRoot\..\packages\nec-core
+    ng test
+    Pop-Location
+}
 if($operation -eq 'build'){ build }
+if($operation -eq 'test'){ test }

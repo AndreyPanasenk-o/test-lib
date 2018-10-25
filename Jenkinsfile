@@ -23,6 +23,11 @@ pipeline{
 				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "build"'
 			}
 		}
+        stage('Stage: Test') {
+			steps {
+				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "test"'
+			}
+		}
     }
     post{
         always{
