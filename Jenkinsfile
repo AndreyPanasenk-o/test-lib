@@ -7,7 +7,7 @@ pipeline{
 	}
     options {
 		// Keep the 5 most recent builds
-		buildDiscarder(logRotator(numToKeepStr:'5')) 
+		buildDiscarder(logRotator(numToKeepStr:'0')) 
 	}
 
     stages{
@@ -23,7 +23,7 @@ pipeline{
             echo 'This will always run'
         }
         success{
-            echo 'SUCCESS1'
+            echo 'SUCCESS2'
         }
         failure{
             echo 'FAILED'
