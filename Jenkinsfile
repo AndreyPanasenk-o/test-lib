@@ -2,7 +2,7 @@ pipeline{
     agent {
 		node {
 			label 'windows'
-			customWorkspace 'workspace/' + env.JOB_NAME
+			//customWorkspace 'workspace/' + env.JOB_NAME
 		}
 	}
     options {
