@@ -31,11 +31,18 @@ pipeline{
         stage('Stage: Test') {
 			steps {
 				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "test"'
+                echo 'BUILD NAME ' + env.CURRENT_BUILD_NAME
 			}
 		}
-        stage('Stage: Publish') {
+        stage('Condition: Run Full buid?') {
+			when {
+				expression { 
+					return env.CURRENT_BUILD_NAME == 'NFWUIPF'
+				}
+			}
 			steps {
-				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "publish" -npmRegistry %NPM_REGISTRY%'
+				echo 'Full Build Initiated'
+				load 'Build/Jenkinsfile-Full'
 			}
 		}
     }

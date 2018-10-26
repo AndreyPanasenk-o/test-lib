@@ -1,0 +1,5 @@
+stage('Stage: Publish') {
+	steps {
+		bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "publish" -npmRegistry %NPM_REGISTRY%'
+	}
+}
