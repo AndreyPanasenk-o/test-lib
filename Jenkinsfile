@@ -37,7 +37,7 @@ pipeline{
         stage('Condition: Run Full buid?') {
 			when {
 				expression { 
-					return env.CURRENT_BUILD_NAME == 'NFWUIPF'
+					return env.CURRENT_BUILD_NAME == 'multibranch-local'
 				}
 			}
 			steps {
