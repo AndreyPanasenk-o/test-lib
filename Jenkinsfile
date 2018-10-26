@@ -11,6 +11,11 @@ pipeline{
 		buildDiscarder(logRotator(numToKeepStr:'10')) 
 	}
 
+    environment {
+		CURRENT_BUILD_NAME = env.JOB_NAME.substring(0, env.JOB_NAME.indexOf('/'))
+		NPM_REGISTRY = "http://localhost:4873"
+	}
+
     stages{
 		stage('Checkout local branch') {
 			steps {
@@ -20,12 +25,17 @@ pipeline{
 		}
         stage('Stage: Build') {
 			steps {
-				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "build"'
+				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "build" -npmRegistry %NPM_REGISTRY%'
 			}
 		}
         stage('Stage: Test') {
 			steps {
 				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "test"'
+			} -npmUser %%
+		}
+        stage('Stage: Publish') {
+			steps {
+				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "publish" -npmRegistry %NPM_REGISTRY%'
 			}
 		}
     }
