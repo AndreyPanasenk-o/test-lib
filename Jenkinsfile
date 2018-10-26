@@ -31,7 +31,7 @@ pipeline{
         stage('Stage: Test') {
 			steps {
 				bat 'powershell -ExecutionPolicy Unrestricted -File Build\\BuildHelper.ps1 -operation "test"'
-			} -npmUser %%
+			}
 		}
         stage('Stage: Publish') {
 			steps {
