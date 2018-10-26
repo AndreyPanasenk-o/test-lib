@@ -41,7 +41,7 @@ pipeline{
     }
     post{
         always{
-            echo 'This will always run_github'
+            echo 'MASTER This will always run_github'
         }
         success{
             echo 'SUCCESS2'
