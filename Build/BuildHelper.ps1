@@ -4,17 +4,43 @@ param(
     [string]$npmRegistry
 )
 
-function build{  
-    Push-Location $PSScriptRoot\..\packages\nec-core
-    npm install --registry $npmRegistry
-    ng build nec-core-lib
-    ng build
-    checkExitCode
-    Pop-Location
+function build{
+    installPackages
+    buildLib
+    addVersionToLib
+    buildTestApp   
 }
 function test{
     Push-Location $PSScriptRoot\..\packages\nec-core
     ng test
+    checkExitCode
+    Pop-Location
+}
+
+function installPackages{
+    Push-Location $PSScriptRoot\..\packages\nec-core
+    npm install --registry $npmRegistry
+    checkExitCode
+    Pop-Location
+}
+
+function addVersionToLib{
+    Push-Location $PSScriptRoot\..\packages\nec-core\projects\nec-core-lib\
+    gulp
+    checkExitCode
+    Pop-Location
+}
+
+function buildLib{
+    Push-Location $PSScriptRoot\..\packages\nec-core\projects\nec-core-lib\
+    ng build nec-core-lib
+    checkExitCode
+    Pop-Location
+}
+
+function buildTestApp{
+    Push-Location $PSScriptRoot\..\packages\nec-core
+    ng build
     checkExitCode
     Pop-Location
 }
