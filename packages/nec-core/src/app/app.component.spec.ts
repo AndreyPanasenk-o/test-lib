@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'nec-core'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('nec-core');
+    expect(app.title).toEqual('nec-core1');
   });
 
   it('should render title in a h1 tag', () => {
