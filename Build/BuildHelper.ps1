@@ -9,6 +9,7 @@ function build{
     npm install --registry $npmRegistry
     ng build nec-core-lib
     ng build
+    checkExitCode
     Pop-Location
 }
 function test{
@@ -21,6 +22,7 @@ function test{
 function publish{
     Push-Location $PSScriptRoot\..\packages\nec-core\dist\nec-core-lib
     npm publish --registry $npmRegistry
+    checkExitCode
     Pop-Location
 }
 
